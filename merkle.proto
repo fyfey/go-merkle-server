@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package merkle;
+
+service Merkle {
+    rpc GetPart (PartRequest) returns (Part) {}
+}
+
+message Proof {
+    message ProofNode {
+        enum Side {
+            LEFT = 0;
+            RIGHT = 1;
+        }
+        Side side = 1;
+        string hash = 2;
+    }
+    repeated ProofNode nodes = 1;
+    string merkleRoot = 2;
+}
+
+message Part {
+    int32 idx = 1;
+    Proof proof = 2;
+    bytes data = 3;
+}
+
+message PartRequest {
+    int32 idx = 1;
+}
