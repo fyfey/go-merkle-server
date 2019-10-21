@@ -36,7 +36,6 @@ func main() {
 	server := &merkleServer{tree}
 	pb.RegisterMerkleServer(grpcServer, server)
 
-	fmt.Printf("%X %X", tree.Chunks[0], tree.Chunks[7])
-
+	fmt.Println("Ready for connections!")
 	grpcServer.Serve(lis)
 }

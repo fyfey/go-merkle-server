@@ -102,7 +102,6 @@ func (t *MerkleTree) Read(reader io.Reader) {
 		fmt.Printf("#%03d %s\n", i, hash)
 		newData := make([]byte, read)
 		copy(newData, buf[:read])
-		fmt.Printf("chunk %d: %x\n", i, newData)
 		t.Chunks = append(t.Chunks, newData)
 		t.Nodes[0] = append(t.Nodes[0], &Node{hash: hash})
 		i++
